@@ -6,7 +6,7 @@ app.use(express.static('./public'))
 
 const news = new News();
 
-news.create({title:'some title',content:'Some Content'});
+news.create({title:'some title',content:'Some Contessssnt'});
 
 
 const PORT =5000;

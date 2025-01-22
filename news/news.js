@@ -11,17 +11,18 @@ class News {
     }
 
     try {
-      fs.accessdirSync(this.path);
+      fs.accessSync(this.path);
     } catch (error) {
       fs.writeFileSync(this.path, '[]');
     }
   }
 
 async create(data){
-    const TotalData = JSON.parse(await fs.promises.readFile(this.path));
+  const TotalData = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
+
       TotalData.push(data)
 
-      await fs.promises.writeFile(this.path,JSON.stringify(TotalData))
+      await fs.promises.writeFile(this.path,JSON.stringify(TotalData,null,2))
 
  }
 

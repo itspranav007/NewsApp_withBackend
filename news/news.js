@@ -22,29 +22,24 @@ class News {
   }
 
   async create(data) {
-    const TotalData =await this.getAll()
+    const TotalData = await this.getAll();
     const id = this.createId();
     TotalData.push({ ...data, id });
 
     await fs.promises.writeFile(this.path, JSON.stringify(TotalData, null, 2));
   }
 
-     async getAll(){
-      
-     return JSON.parse(await fs.promises.readFile(this.path));
+  async getAll() {
+    return JSON.parse(await fs.promises.readFile(this.path));
+  }
 
-          }
-  
-      async getSingle(id){
-         const data = await this.getAll();
-          return data.find((news) => news.id === id)
-         
-      }
-      async getByCategory(category){
-         const data = await this.getAll();
-          return data.filter((news) => news.category === category)
-         
-      }
-
+  async getSingle(id) {
+    const data = await this.getAll();
+    return data.find((news) => news.id === id);
+  }
+  async getByCategory(category) {
+    const data = await this.getAll();
+    return data.filter((news) => news.category === category);
+  }
 } //=> News Class End
 module.exports = News;

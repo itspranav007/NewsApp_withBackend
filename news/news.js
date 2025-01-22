@@ -18,8 +18,7 @@ class News {
   }
 
 async create(data){
-  const TotalData = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
-
+    const TotalData = JSON.parse(await fs.promises.readFile(this.path));
       TotalData.push(data)
 
       await fs.promises.writeFile(this.path,JSON.stringify(TotalData,null,2))

@@ -1,11 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/',(req,res)=>{
-
-  res.send('<h1>Server</h1>');
-})
-
+app.use(express.static('./public'))
 
 const PORT =5000;
 

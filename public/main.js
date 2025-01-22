@@ -40,5 +40,11 @@ const validateForm = () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  validateForm();
+  const valid = validateForm();
+
+  if(valid)
+    {
+      //Submit form
+      
+    }
 });

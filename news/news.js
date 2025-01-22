@@ -16,6 +16,15 @@ class News {
       fs.writeFileSync(this.path, '[]');
     }
   }
-}
 
+async create(){
+    const TotalData = JSON.parse(await fs.promises.readFile(this.path));
+    console.log(TotalData)
+
+ }
+
+
+
+
+}//=> News Class End
 module.exports = News;

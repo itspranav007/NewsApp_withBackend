@@ -4,7 +4,9 @@ const News = require('./news/news')
 
 app.use(express.static('./public'))
 
-new News();
+const news = new News();
+
+news.create();
 
 
 const PORT =5000;

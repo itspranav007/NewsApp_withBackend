@@ -17,9 +17,15 @@ class News {
     }
   }
 
+   createId(){
+    return new Date().getTime().toString();
+  }
+
 async create(data){
     const TotalData = JSON.parse(await fs.promises.readFile(this.path));
+    const id = this.createId();
       TotalData.push(data)
+      console.log(id)
 
       await fs.promises.writeFile(this.path,JSON.stringify(TotalData,null,2))
 

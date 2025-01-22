@@ -13,26 +13,38 @@ class News {
     try {
       fs.accessSync(this.path);
     } catch (error) {
-      fs.writeFileSync(this.path, '[]');
+      fs.writeFileSync(this.path, "[]");
     }
   }
 
-   createId(){
+  createId() {
     return new Date().getTime().toString();
   }
 
-async create(data){
-    const TotalData = JSON.parse(await fs.promises.readFile(this.path));
+  async create(data) {
+    const TotalData =await this.getAll()
     const id = this.createId();
-      TotalData.push(data)
-      console.log(id)
+    TotalData.push({ ...data, id });
 
-      await fs.promises.writeFile(this.path,JSON.stringify(TotalData,null,2))
+    await fs.promises.writeFile(this.path, JSON.stringify(TotalData, null, 2));
+  }
 
- }
+     async getAll(){
+      
+     return JSON.parse(await fs.promises.readFile(this.path));
 
+          }
+  
+      async getSingle(id){
+         const data = await this.getAll();
+          return data.find((news) => news.id === id)
+         
+      }
+      async getByCategory(category){
+         const data = await this.getAll();
+          return data.filter((news) => news.category === category)
+         
+      }
 
-
-
-}//=> News Class End
+} //=> News Class End
 module.exports = News;

@@ -8,7 +8,7 @@ const ImageProcess = async (req, id) => {
     }
   });
 
-  const formatedName = req.file.originalname.split("").join("-");
+  const formatedName = req.file.originalname.split("").join("");
   const fileName = `${id}-${formatedName}`;
 
   try {

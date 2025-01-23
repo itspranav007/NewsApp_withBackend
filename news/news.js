@@ -21,9 +21,9 @@ class News {
     return new Date().getTime().toString();
   }
 
-  async create(data) {
+  async create(data,id) {
     const TotalData = await this.getAll();
-    const id = this.createId();
+    
     TotalData.push({ ...data, id });
 
     await fs.promises.writeFile(this.path, JSON.stringify(TotalData, null, 2));

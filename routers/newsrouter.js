@@ -13,14 +13,11 @@ const upload = multer({ storage });
 router.post("/create", upload.single("thumbnail"), async (req, res) => {
   res.send("Submit successful");
 
-  console.log("file", req.file); //=>check
-  console.log("body", req.body); //==>check
+  const news = new News();
 
-
-  const id = new News().createId();
-
-await ImageProcess(req,id);
-
+  const id = news.createId();
+  news.create(req.body, id);
+  await ImageProcess(req, id);
 });
 
 module.exports = router;

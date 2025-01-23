@@ -8,7 +8,7 @@ const ImageProcess = async (req, id) => {
     }
   });
 
-  const formatedName = req.file.originalname.split("").join("");
+  const formatedName = req.file.originalname.split(" ").join("-");
   const fileName = `${id}-${formatedName}`;
 
   try {
@@ -18,6 +18,8 @@ const ImageProcess = async (req, id) => {
   } catch (error) {
     console.log("Error while Processing Image ", error);
   }
+
+  return fileName;
 };
 
 module.exports = ImageProcess;

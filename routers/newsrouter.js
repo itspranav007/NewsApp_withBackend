@@ -14,10 +14,13 @@ router.post("/create", upload.single("thumbnail"), async (req, res) => {
   res.send("Submit successful");
 
   const news = new News();
-
   const id = news.createId();
-  news.create(req.body, id);
-  await ImageProcess(req, id);
+
+
+  const imageName = await ImageProcess(req, id);
+  news.create(req.body, id,imageName);//=> http://localhost:5000/image-name
+
+
 });
 
 module.exports = router;

@@ -27,7 +27,7 @@ class News {
     TotalData.push({
       ...data,
       id,
-      thumbnail: `http://localhost:5000/${imageName}/`,
+      thumbnail: `http://localhost:5000/${imageName}`,
     });
 
     await fs.promises.writeFile(this.path, JSON.stringify(TotalData, null, 2));

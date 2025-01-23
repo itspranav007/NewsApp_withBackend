@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const newsRouter = require('./routers/newsrouter')
 
-app.use(express.static("./public"));
-app.use(express.static("./data/uploadsImage"));
+app.use(express.static("public"));
+app.use(express.static("data/uploadsimage"));
 
 
 app.use('/api',newsRouter)
